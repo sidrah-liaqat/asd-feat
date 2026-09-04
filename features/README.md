@@ -22,5 +22,4 @@ features/
 ```
 
 See `../FEATURES_MANIFEST.md` for the file naming and the mapping to paper
-tables, and `asd_data_sample/aggregate_features/` for a 15-session slice in the
-same aggregate-feature format.
+tables.

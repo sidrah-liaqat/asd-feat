@@ -29,8 +29,8 @@ Located under `PATH/TO/FEATURES/aggregate/`:
 
 Column schema of the `hj_*` files (per behavior channel — smile, lookface,
 lookobject, vocal, social_smile, social_vocal — `fq`, `rate`, `duration`,
-`prop`) is documented in `asd_data_sample/aggregate_features/README.md`, which
-ships a 15-session slice in exactly this format for inspection.
+`prop`) is documented alongside the dataset release; the same schema is used by
+every `hj_*` file.
 
 Fold-3 split filename lists are read from
 `PATH/TO/FEATURES/data_splits/standard_filenames/fold3/`.
@@ -61,10 +61,3 @@ The `run_*` and `compute_*` scripts write their result CSV/JSON next to the
 configured features path (`PATH/TO/FEATURES/...`). File names are printed at the
 end of each run.
 
-## Note on the 15-session sample
-
-`asd_data_sample/aggregate_features/` contains the Stage-2 aggregate features
-for 15 sessions, in the same schema as the `hj_*` files, so reviewers can see
-the input format. It is a single-partner-per-session inspection slice and does
-not contain the paired-partner rows or the full-cohort coverage needed to
-reproduce the table numbers — those require the full feature release.

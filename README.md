@@ -39,6 +39,20 @@ features/                    (empty) drop the full feature release here — see 
 FEATURES_MANIFEST.md         file -> paper-table manifest and feature-file naming
 ```
 
+## Setup
+
+```bash
+git clone https://github.com/<user>/<repo>.git
+cd <repo>
+python -m venv .venv && source .venv/bin/activate
+pip install -r stage1_behavior_detection/requirements.txt
+```
+
+Stage 1 requires PyTorch (the pinned build is CUDA 12.4; swap for a CPU build if
+needed). Stage 2 additionally uses scikit-learn, imbalanced-learn and, for the
+Keras classifier variants, TensorFlow. Note the pinned `numpy==1.24.1` — NumPy 2.x
+breaks the PyTorch `from_numpy` bridge for these builds.
+
 ## Getting the features
 
 The code reads pre-computed aggregate features from a features directory. All
@@ -46,11 +60,10 @@ paths in the scripts are written as `PATH/TO/FEATURES/...` placeholders; point
 them at a local copy of the full ASD-FEAT feature release (hosted on the
 repository described in the paper's "Licensing, Access, and Ethics" section).
 
-For a quick look at the **format** of the Stage-2 inputs without the full
-release, the accompanying `asd_data_sample/aggregate_features/` folder holds the
-per-session aggregate features (human-coded and ML variants) for 15 sessions,
-using the same columns the code consumes. That slice is for inspection only;
-reproducing the paper's tables requires the full-cohort feature release.
+The expected directory layout is documented in
+[`features/README.md`](features/README.md), and the naming of every feature file
+in [`FEATURES_MANIFEST.md`](FEATURES_MANIFEST.md). Reproducing the paper's
+tables requires the full-cohort feature release from Zenodo.
 
 ## Stage 2 — how the pieces fit
 
@@ -75,4 +88,8 @@ Aggregate feature files and results are keyed by a labeling-source indicator:
 
 ## License
 
-MIT (see `stage1_behavior_detection/LICENSE`).
+MIT — see [`LICENSE`](LICENSE).
+
+Note that the released features are produced with third-party tools whose
+licenses propagate to downstream use (OpenFace 2.0 and Gaze360 are
+non-commercial/research-only). See the dataset's datasheet for the full table.
