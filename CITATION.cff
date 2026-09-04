@@ -37,7 +37,12 @@ keywords:
   - infant and toddler development
   - computational behavioral phenotyping
   - privacy-preserving feature release
+doi: 10.5281/zenodo.22309762
+repository-code: https://github.com/sidrah-liaqat/asd-feat
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22309762
+    description: This code release (Zenodo, all versions)
   - type: doi
     value: 10.5281/zenodo.22261227
     description: ASD-FEAT dataset (Zenodo, all versions)

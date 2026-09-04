@@ -1,6 +1,7 @@
 # ASD-FEAT — code release
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22261227.svg)](https://doi.org/10.5281/zenodo.22261227)
+[![Code DOI](https://zenodo.org/badge/1357470013.svg)](https://doi.org/10.5281/zenodo.22309762)
+[![Dataset DOI](https://img.shields.io/badge/Dataset%20DOI-10.5281%2Fzenodo.22261227-1682D4)](https://doi.org/10.5281/zenodo.22261227)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Code accompanying *ASD-FEAT: A Multi-Modal Infant Video-Derived Dataset for Early ASD
@@ -27,8 +28,14 @@ paper's "Licensing, Access, and Ethics" section.
 
 ## Citing
 
-If you use this code or the dataset, please cite the paper and the dataset DOI
-above. Repository metadata for citation managers is in `CITATION.cff`.
+If you use this work, please cite the paper together with the relevant DOI:
+
+- **Code** (this repository): [10.5281/zenodo.22309762](https://doi.org/10.5281/zenodo.22309762)
+- **Dataset** (ASD-FEAT): [10.5281/zenodo.22261227](https://doi.org/10.5281/zenodo.22261227)
+
+Both are Zenodo *concept* DOIs — they always resolve to the latest version. To
+pin an exact snapshot instead, use the version DOI shown on the corresponding
+Zenodo record. Repository metadata for citation managers is in `CITATION.cff`.
 
 ## Layout
 
