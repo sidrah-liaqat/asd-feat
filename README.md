@@ -42,8 +42,8 @@ FEATURES_MANIFEST.md         file -> paper-table manifest and feature-file namin
 ## Setup
 
 ```bash
-git clone https://github.com/<user>/<repo>.git
-cd <repo>
+git clone https://github.com/sidrah-liaqat/asd-feat.git
+cd asd-feat
 python -m venv .venv && source .venv/bin/activate
 pip install -r stage1_behavior_detection/requirements.txt
 ```
