@@ -68,7 +68,7 @@ The expected directory layout is documented in
 in [`FEATURES_MANIFEST.md`](FEATURES_MANIFEST.md). Reproducing the paper's
 tables requires the full-cohort feature release from Zenodo.
 
-## Stage 2 — how the pieces fit
+## Stage 2 — Taking frame level behavior predictions to ASD risk prediction 
 
 1. `temporal_to_aggregate.py` — turns Stage-1 frame-level predictions (or the
    human-coded labels) into per-session aggregate behavior statistics.
