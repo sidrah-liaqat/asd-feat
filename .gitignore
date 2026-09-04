@@ -7,14 +7,11 @@ features/*
 *.h5
 *.hdf5
 
-# --- Private / de-identification artifacts: MUST NEVER be committed ---
-# (these map released IDs back to real subject IDs)
-*crosswalk*
-*PRIVATE*
-*secret*
+# --- Local / sensitive files ---
 *.key
-release_log_*.csv
-audio_canon_map*.csv
+*.pem
+.env
+.env.*
 
 # --- Model checkpoints / outputs ---
 checkpoint/
