@@ -1,0 +1,34 @@
+{
+  "upload_type": "software",
+  "title": "ASD-FEAT: A Multi-Modal Infant Video-Derived Dataset for Early ASD Risk Prediction — code release",
+  "description": "<p>Code accompanying the paper <em>ASD-FEAT: A Multi-Modal Infant Video-Derived Dataset for Early ASD Risk Prediction</em>. It implements the two-stage pipeline: Stage 1 trains and runs transformer behavior detectors (Look-Face, Look-Object, Smile, Social-Vocalization) over per-frame multi-modal features; Stage 2 summarizes those behavior labels into per-session aggregate features and trains/evaluates the ASD-risk classifiers, including the within-visit partner-contrast analyses.</p><p>The ASD-FEAT dataset itself is distributed separately via Zenodo (DOI 10.5281/zenodo.22261227) and contains derived features only, with no raw video or audio.</p>",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [
+    { "name": "Liaqat, Sidrah", "affiliation": "University of Kentucky" },
+    { "name": "Helvaci, Halil", "affiliation": "University of Kentucky" },
+    { "name": "Cheung, Sen-Ching", "affiliation": "University of Kentucky" },
+    { "name": "Wu, Chongruo", "affiliation": "University of California, Davis" },
+    { "name": "Chen, Dongjie", "affiliation": "University of California, Davis" },
+    { "name": "Chuah, Chen-Nee", "affiliation": "University of California, Davis" },
+    { "name": "Ozonoff, Sally", "affiliation": "UC Davis MIND Institute" }
+  ],
+  "keywords": [
+    "autism spectrum disorder",
+    "early ASD risk prediction",
+    "multimodal behavioral dataset",
+    "infant and toddler development",
+    "computational behavioral phenotyping",
+    "privacy-preserving feature release",
+    "behavior detection",
+    "machine learning"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.22261227",
+      "relation": "isSupplementTo",
+      "resource_type": "dataset",
+      "scheme": "doi"
+    }
+  ]
+}
