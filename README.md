@@ -33,10 +33,6 @@ If you use this work, please cite the paper together with the relevant DOI:
 - **Code** (this repository): [10.5281/zenodo.22309762](https://doi.org/10.5281/zenodo.22309762)
 - **Dataset** (ASD-FEAT): [10.5281/zenodo.22261227](https://doi.org/10.5281/zenodo.22261227)
 
-Both are Zenodo *concept* DOIs — they always resolve to the latest version. To
-pin an exact snapshot instead, use the version DOI shown on the corresponding
-Zenodo record. Repository metadata for citation managers is in `CITATION.cff`.
-
 ## Layout
 
 ```
