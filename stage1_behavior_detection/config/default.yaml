@@ -1,0 +1,95 @@
+# config/default.yaml
+
+run: train # or test
+
+# --- Project-wide settings ---
+project:
+  name: "ASD_Behavior_Prediction"
+  random_seed: 42 # For reproducibility
+
+# --- Paths for data, models, and outputs ---
+paths:
+  model_chkpt_dir: "/path/to/asd_features/checkpoint/"
+  model_final_dir: "/path/to/asd_features/finalmodel/"
+
+  parquet_features_dir: "/path/to/asd_features/features/parquet_files/"
+  i3d_features_dir: "/path/to/asd_features/features/i3dfeatures/frame16/"
+  data_splits_dir: "/path/to/asd_features/data_splits/"
+  prediction_output_dir: "/path/to/asd_features/predictions/"
+  video_output_dir: "/path/to/asd_features/video_out/"
+  metrics_dir: "/path/to/asd_features/metrics/"
+  aggregated_metrics_dir: "/path/to/aggregated_metrics/"
+
+# --- Data processing settings ---
+action_id:
+  look_face: 0
+  look_object: 1
+  smile: 2
+  vocal: 3
+data:
+  fold: 3
+  subfold: 0
+  debug_mode: false # Set to true for quick iterations during development
+  offset_debug: 0 # only useful in debug mode, set index number of file to start training from
+  example_count_debug: 3 #only useful in debug mode, set number of files to train on
+  behavior: 'look_face' # 0:look face, 1:look object, 2: smile, 3:vocalization
+  frame_window_size: 16 # Your 'frame' variable
+  overlap_windows: false # False means no overlap between windows of data
+  batch_size: 16 # Your 'BATCHSIZE' variable
+  num_workers: 4 # Number of workers for DataLoader (0 for main thread, >0 for multiprocessing)
+  rescale_landmarks_factor: 1 # Factor for RescaleLandmarks_test transform
+  data_features_dir: "/path/to/asd_features/features/parquet_files/"
+# --- Model architecture settings (if needed) ---
+model:
+  architecture: "Transformer" # Or other model names like "combination_model_mlp"
+  transformer_params: # Parameters specific to the Transformer model
+    k: 108
+    heads: 8
+    depth: 8
+    num_tokens: 1000 # Verify usage if this is fixed or dynamically determined
+    num_classes: 2 # For binary classification tasks
+
+# --- Training parameters ---
+training:
+  device: cpu
+  operation_mode: 'new' # 'new' for new training, 'old' to load and continue training
+  num_epochs: 50 #
+  
+  # Optimizer settings
+  optimizer: "Adam"
+  learning_rate: 0.001
+  weight_decay: 0.001
+  
+  # Learning rate scheduler settings
+  scheduler:
+    type: "StepLR"
+    step_size: 5
+    gamma: 0.8
+  
+  # Loss function settings
+  loss_function: "bce_with_logits"
+  loss_weights: [0.16, 0.84] # Weights for class 0 and class 1 in BCE/Focal Loss (alpha/gamma in your code)
+  alpha: 1 # Your 'alpha' for FocalLoss, ensure it's used correctly with loss_weights
+  gamma: 0 # Your 'gamma' for FocalLoss
+  
+  active_learning_enabled: false # Your 'active_learning' variable, converted to boolean
+
+# --- Inference parameters ---
+inference:
+  sliding_inference_enabled: false
+  split: test
+  load_model_epoch: 39 # the epoch of a model to load for inference
+
+  # Example thresholds (from your code, if `bbox_thresh_high`/`low` were relevant to inference)
+  bbox_thresh_high: 10000
+  bbox_thresh_low: 100
+
+  dbscan: # Parameters for DBSCAN
+    eps: 35
+    min_samples: 8
+  
+  # Optional: For saving predictions and results
+  save_predictions: false
+  save_clustered_predictions: false
+  save_results: false
+  save_mse: false

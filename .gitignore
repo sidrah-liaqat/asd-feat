@@ -1,0 +1,44 @@
+# --- Data: never commit dataset files to the code repo (size + privacy) ---
+features/*
+!features/README.md
+*.parquet
+*.npy
+*.pkl
+*.h5
+*.hdf5
+
+# --- Private / de-identification artifacts: MUST NEVER be committed ---
+# (these map released IDs back to real subject IDs)
+*crosswalk*
+*PRIVATE*
+*secret*
+*.key
+release_log_*.csv
+audio_canon_map*.csv
+
+# --- Model checkpoints / outputs ---
+checkpoint/
+savedmodel/
+finalmodel/
+*.pt
+*.pth
+*.ckpt
+results/
+*_results.json
+*_results.csv
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

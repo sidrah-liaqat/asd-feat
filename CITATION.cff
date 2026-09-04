@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+title: >-
+  ASD-FEAT: A Multi-Modal Infant Video-Derived Dataset for Early ASD Risk
+  Prediction — code release
+message: >-
+  If you use this software or the ASD-FEAT dataset, please cite the
+  accompanying paper and the dataset DOI below.
+type: software
+authors:
+  - given-names: Sidrah
+    family-names: Liaqat
+    email: sidrah.liaqat@uky.edu
+    affiliation: University of Kentucky
+  - given-names: Halil
+    family-names: Helvaci
+    affiliation: University of Kentucky
+  - given-names: Sen-Ching
+    family-names: Cheung
+    affiliation: University of Kentucky
+  - given-names: Chongruo
+    family-names: Wu
+    affiliation: University of California, Davis
+  - given-names: Dongjie
+    family-names: Chen
+    affiliation: University of California, Davis
+  - given-names: Chen-Nee
+    family-names: Chuah
+    affiliation: University of California, Davis
+  - given-names: Sally
+    family-names: Ozonoff
+    affiliation: UC Davis MIND Institute
+license: MIT
+keywords:
+  - autism spectrum disorder
+  - early ASD risk prediction
+  - multimodal behavioral dataset
+  - infant and toddler development
+  - computational behavioral phenotyping
+  - privacy-preserving feature release
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22261227
+    description: ASD-FEAT dataset (Zenodo, all versions)

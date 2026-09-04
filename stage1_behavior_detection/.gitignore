@@ -1,0 +1,18 @@
+# IDE
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Logs and outputs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
