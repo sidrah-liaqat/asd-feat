@@ -1,7 +1,7 @@
 # Autism Spectrum Disorder related Behavior Detection from Videos of Infant Interaction
 
 ## Multi-head self-attention based Transformer model architecture
-![behavior detection.png](behavior_detection.png)
+![Transformer detector architecture: I3D RGB/flow embeddings and per-frame multi-modal features fused through multi-head self-attention to predict frame-level child behaviors](i3d_transformer.png)
 
 
 

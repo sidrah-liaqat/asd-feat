@@ -4,6 +4,10 @@
 [![Dataset DOI](https://img.shields.io/badge/Dataset%20DOI-10.5281%2Fzenodo.22261227-1682D4)](https://doi.org/10.5281/zenodo.22261227)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+<p align="center">
+  <img src="docs/pipeline_overview.png" alt="ASD-FEAT two-stage pipeline: Stage 1 detects child behaviors from multi-modal per-frame features; Stage 2 aggregates them into per-session features for ASD risk prediction" width="480">
+</p>
+
 Code accompanying *ASD-FEAT: A Multi-Modal Infant Video-Derived Dataset for Early ASD
 Risk Prediction*. It covers the paper's two-stage pipeline:
 
