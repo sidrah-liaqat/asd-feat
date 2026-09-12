@@ -11,19 +11,7 @@ Instructions on project setup and running training and inference.
 
 ### Installation
 
-1.  **Get the code:** Clone this repository and `cd` into it.
-2.  **Create a Conda environment (recommended):**
-    ```bash
-    conda create -n your_env_name python=3.x
-    ```
-    Our current python version is 3.8.19
-    ```
-    conda activate your_env_name
-    ```
-3.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt 
-    ```
+See the repository-level [Setup](../README.md#setup) instructions.
 
 ### Data
 
