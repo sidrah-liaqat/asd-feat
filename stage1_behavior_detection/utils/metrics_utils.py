@@ -114,6 +114,7 @@ class PredMetricTracker:
 
         # Tensors to accumulate all predictions and true labels
         self.o_pred_label_arr = torch.tensor([], dtype=torch.float32)
+        self.o_predicted_arr = torch.tensor([], dtype=torch.float32)
         self.o_label_arr = torch.tensor([], dtype=torch.float32)
         self.o_clust_label_arr = torch.tensor([], dtype=torch.float32)
     def update(self, outputs_sliced, func_labels, conf):
@@ -169,6 +170,7 @@ class PredMetricTracker:
 
         # Ensure tensors are on CPU and float32 before concatenating
         self.o_pred_label_arr = torch.cat((self.o_pred_label_arr, self.pred_label_arr.float().cpu()))
+        self.o_predicted_arr = torch.cat((self.o_predicted_arr, self.predicted_arr.float().cpu()))
         self.o_label_arr = torch.cat((self.o_label_arr, self.label_arr.float().cpu()))
         self.o_clust_label_arr = torch.cat((self.o_clust_label_arr, torch.from_numpy(clust).float().cpu()))
 
@@ -219,8 +221,9 @@ class PredMetricTracker:
         """
         Calculates and prints all the overall classification metrics,
         including accuracy, sensitivity, specificity, precision, weighted average accuracy,
-        and then provides scikit-learn's classification report and ROC AUC score
-        for both raw and clustered predictions.
+        and then provides scikit-learn's classification report for both raw and
+        clustered predictions, plus a true ROC AUC for the raw (continuous-score)
+        predictions and a balanced-accuracy figure for the clustered (binary) ones.
         """
         print("\n" + "=" * 30)
         print("Overall Metrics Summary")
@@ -247,10 +250,16 @@ class PredMetricTracker:
         print("-" * 30)
         # Ensure labels are integers for classification_report if they represent classes
         # And predictions are also integer if they are hard predictions (0 or 1)
-        # roc_auc_score typically expects probabilities or binary predictions
         try:
             print(classification_report(self.o_label_arr.long().numpy(), self.o_pred_label_arr.long().numpy()))
-            auc = roc_auc_score(self.o_label_arr.numpy(), self.o_pred_label_arr.numpy())
+            # CORRECTION: ROC AUC must be computed on the continuous model
+            # output (o_predicted_arr), not the 0.5-thresholded label
+            # (o_pred_label_arr). roc_auc_score accepts a two-valued vector
+            # without error, but it then collapses to balanced accuracy at
+            # the single 0.5 operating point rather than a true area swept
+            # across thresholds -- silently overstating what was reported as
+            # "ROC AUC" here previously.
+            auc = roc_auc_score(self.o_label_arr.numpy(), self.o_predicted_arr.numpy())
             print('ROC AUC: %.4f' % auc)
         except ValueError as e:
             print(f"Could not generate classification report/ROC AUC for raw predictions: {e}")
@@ -261,10 +270,16 @@ class PredMetricTracker:
         print("-" * 30)
         try:
             print(classification_report(self.o_label_arr.long().numpy(), self.o_clust_label_arr.long().numpy()))
-            auc_clustered = roc_auc_score(self.o_label_arr.numpy(), self.o_clust_label_arr.numpy())
-            print('ROC AUC (clustered): %.4f' % auc_clustered)
+            # The clustering step (DBSCAN event-merging over already-
+            # thresholded predictions; see inference.py) operates on binary
+            # labels and produces a binary 0/1 mask with no continuous score
+            # attached, so there is no true AUROC to compute here. This is
+            # balanced accuracy at the clustered operating point, not an
+            # AUROC -- labelled accordingly rather than as "ROC AUC".
+            balanced_acc_clustered = roc_auc_score(self.o_label_arr.numpy(), self.o_clust_label_arr.numpy())
+            print('Balanced accuracy (clustered; NOT an AUROC): %.4f' % balanced_acc_clustered)
         except ValueError as e:
-            print(f"Could not generate classification report/ROC AUC for clustered predictions: {e}")
+            print(f"Could not generate classification report/balanced accuracy for clustered predictions: {e}")
             print(
                 "This often happens if there's only one class present in true labels or clustered predictions.")
 
